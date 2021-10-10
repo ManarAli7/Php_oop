@@ -7,21 +7,23 @@ abstract class upLoadBook {
     //You Must To Use
     abstract  public function setBookName($variable); 
 
-    abstract public function changeSpec($variable1,$variable2,$variable3,$variable4);
+    abstract public function addBook($variable1,$variable2,$variable3,$variable4);
 }
-
 
 
 
 //Main Class, Super Class
 class library extends upLoadBook {
     //Variable inside class is Property
+
     public $name_book;
     public $name_author;
-    public $pagenumber;
+    public $pagenumber;  //inside Main Class, inside SubClass, outSide Class
     public $price;
-    private $id;
+    private $id;    //inside Main class
     const  MAXCHAR = 40;
+
+    //protected  inside Main Class, inside SubClass
 
     //function inside class is Method
     final public function setBookName($name_book) {
@@ -32,7 +34,7 @@ class library extends upLoadBook {
         }
     }
 
-    public function changeSpec($nameBooK,$nameAuthor,$number,$pric){
+    public function addBook($nameBooK,$nameAuthor,$number,$pric){
         $this->name_book   = $nameBooK;
         $this->name_author = $nameAuthor;
         $this->pagenumber  = $number;
@@ -44,9 +46,12 @@ class library extends upLoadBook {
     }
 
 }
+interface interChangePassword{
+    public function changepassword($pass);
+} 
 
 //Clients is Sub Class, Child Class
-class clients extends library {
+class clients extends library  implements interfaceLibrary  {
     //Properties
     public $name;
     private $password;
@@ -85,7 +90,7 @@ echo "<br>".library::MAXCHAR;  //print 40
 echo "<br>".$book1::MAXCHAR."<br>"; //print 40
 
 $book2 = New library();
-$book2->changeSpec("kitap","Ahmed",400,10);
+$book2->addBook("kitap","Ahmed",400,10);
 
 echo "name_book: " .$book2->name_book."<br>";
 echo "name_author: ".$book2->name_author. "<br>";
@@ -93,7 +98,7 @@ echo "pagenumber: ".$book2->pagenumber . "<br>";
 echo "price: ".$book2->price. "<br>"."<br>";
 
 $book3 = New library();
-$book3->changeSpec("الجريمه و العقاب","دوستويفسكي",400,10);
+$book3->addBook("الجريمه و العقاب","دوستويفسكي",400,10);
 echo "name_book: " .$book3->name_book."<br>";
 echo "name_author: ".$book3->name_author. "<br>";
 echo "pagenumber: ".$book3->pagenumber . "<br>";
