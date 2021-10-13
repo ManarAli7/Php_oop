@@ -26,6 +26,14 @@ class library extends upLoadBook {
     //protected  inside Main Class, inside SubClass
 
     //function inside class is Method
+    /*public function __get($parameter){
+        echo "This [". $parameter . "]Not Found Or Not Accessible ";
+    }*/
+
+    public function __set($parameter, $value){
+        echo "This [ ". $parameter . " ]Not Found Or Not Accessible  And You  Cannot Assign This Value[ ".$value." ]To It";
+    }
+    
     final public function setBookName($name_book) {
         if(strlen($name_book) > self::MAXCHAR){
             echo 'Book Name Cannot Be Large Than' . self::MAXCHAR . 'Chars';
@@ -67,6 +75,8 @@ $book1 ->name_book = "الفقراء";
 $book1 ->name_author = "دوستويفسكي";
 $book1 ->pagenumber = "300";
 $book1 ->price = "$5";
+$book1->e = "65";
+echo $book1->e;
 $book1->changeid(55);
 
 $client1 = New clients();
