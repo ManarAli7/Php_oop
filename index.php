@@ -51,7 +51,7 @@ interface interChangePassword{
 } 
 
 //Clients is Sub Class, Child Class
-class clients extends library  implements interfaceLibrary  {
+class clients extends library  implements interChangePassword  {
     //Properties
     public $name;
     private $password;
